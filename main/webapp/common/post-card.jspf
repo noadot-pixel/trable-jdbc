@@ -1,0 +1,44 @@
+<%@ page pageEncoding="UTF-8" %>
+<%@ page import="model.PostDTO" %>
+<%@ page import="util.EscapeUtil" %>
+<%--
+    게시글 카드 하나. index.jsp / posts.jsp / mypage.jsp가 공통으로 쓴다.
+    include 지시어로 "코드째로 복사"되므로, include 하기 전에 아래 변수를 만들어둬야 한다.
+
+        String contextPath          = request.getContextPath();
+        PostDTO post                = (반복문의 현재 게시글)
+        boolean showMyBadge         = (선택) "내 글" 배지를 보여줄지, 생략하면 false
+        String actionsHtml          = (선택) 수정/삭제 같은 버튼 HTML. 안 보여줄 거면 선언하지 않거나 null
+
+    변수 이름이 이 페이지의 변수와 겹치면 중복 선언 에러가 나므로, 미리 선언해두고
+    반복문 안에서 값만 바꿔 재사용한다 (아래 예시처럼).
+--%>
+<article class="story-card">
+
+    <a href="<%= contextPath %>/post/view?bno=<%= post.getBno() %>" class="story-image">
+        <img src="<%= contextPath %>/<%= post.getImgPath() %>" alt="<%= EscapeUtil.html(post.getTitle()) %>">
+    </a>
+
+    <div class="story-content">
+
+        <span class="story-category"><%= EscapeUtil.html(post.getCountryLabel()) %></span>
+
+        <h3><a href="<%= contextPath %>/post/view?bno=<%= post.getBno() %>"><%= EscapeUtil.html(post.getTitle()) %></a></h3>
+
+        <div class="story-information">
+            <span><%= EscapeUtil.html(post.getWriterNick()) %></span>
+            <% if (showMyBadge) { %>
+            <span class="my-post-badge">내 글</span>
+            <% } %>
+            <span><%= post.getRegDate() %></span>
+            <span>조회 <%= post.getViewCnt() %></span>
+            <span>좋아요 <%= post.getLikeCnt() %></span>
+        </div>
+
+        <% if (actionsHtml != null) { %>
+            <%= actionsHtml %>
+        <% } %>
+
+    </div>
+
+</article>

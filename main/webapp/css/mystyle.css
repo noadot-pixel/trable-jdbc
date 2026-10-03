@@ -1869,3 +1869,29 @@
     font-size: 14px;
     text-align: center;
 }
+
+/* =========================
+   폼 안내/오류 메시지 (MVC2 전환 시 추가)
+   Firebase 버전은 alert()로 보여주던 메시지를, 서버가 forward로 돌려줄 때
+   화면에 바로 보여주기 위한 스타일.
+========================= */
+
+.field-error,
+.field-msg {
+    max-width: 720px;
+    margin: 0 auto 20px;
+    padding: 12px 16px;
+    border-radius: 10px;
+    font-size: 14px;
+    text-align: center;
+}
+
+.field-error {
+    color: #d64545;
+    background-color: #fdf0f0;
+}
+
+.field-msg {
+    color: var(--blue);
+    background-color: var(--light-blue);
+}
