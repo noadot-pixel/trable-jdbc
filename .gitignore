@@ -1,0 +1,25 @@
+# OS
+Thumbs.db
+.DS_Store
+
+# Editor / IDE
+.vscode/
+.idea/
+*.iml
+.settings/
+.project
+.classpath
+
+# Java / Tomcat 빌드 결과물
+target/
+build/
+*.class
+*.war
+
+# Oracle JDBC 드라이버 (라이선스상 저장소에 넣지 않음)
+# Oracle 사이트(https://www.oracle.com/database/technologies/appdev/jdbc-downloads.html)에서
+# ojdbc11.jar를 받아 main/webapp/WEB-INF/lib/ 에 직접 넣을 것 (README 참고)
+main/webapp/WEB-INF/lib/*.jar
+
+# 실제 DB 접속 정보(계정/비밀번호)를 분리해서 쓸 경우
+*.local.properties
